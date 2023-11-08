@@ -22,9 +22,11 @@ public class Carrinho {
                 produtosNoCarrinho.add(produto);
     }
 
-    public void removerProdutoNoCarrinho(Produto produto, int quantidade) {
-        for (int i = 0; i < quantidade; i++)
-            produtosNoCarrinho.remove(produto);
+    public void removerProdutoNoCarrinho(String id, int quantidade) {
+        for (int i = 0; i < quantidade; i++) {
+            if (produtosNoCarrinho.get(i).getIdProduto().equals(id))
+                produtosNoCarrinho.remove(produtosNoCarrinho.get(i));
+        }
     }
 
     public void limparCarrinho() {
@@ -56,6 +58,12 @@ public class Carrinho {
         return new HashSet<>(produtosNoCarrinho);
     }
 
+    public int contarOcorrenciasNoCarrinho(Produto produtoParaContar) {
+        if (produtosNoCarrinho.contains(produtoParaContar))
+            return Collections.frequency(produtosNoCarrinho, produtoParaContar);
+        return 0;
+    }
+
     private String valorFormatado(double valor) {
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
         return decimalFormat.format(valor);
@@ -71,13 +79,9 @@ public class Carrinho {
             builder.append(quantidade).append("x ").append(p.getNomeProduto());
             builder.append(" -> R$ ").append(valorFormatado(precoTotalDoProduto)).append("\n");
         }
-        //builder.append("Preço total do carrinho: R$ ").append(valorFormatado(calculaTotal()));
+        builder.append("Preço total do carrinho: R$ ").append(valorFormatado(calculaTotal()));
         return builder.toString();
     }
 
-    public int contarOcorrenciasNoCarrinho(Produto produtoParaContar) {
-        if (produtosNoCarrinho.contains(produtoParaContar))
-            return Collections.frequency(produtosNoCarrinho, produtoParaContar);
-        return 0;
-    }
+
 }

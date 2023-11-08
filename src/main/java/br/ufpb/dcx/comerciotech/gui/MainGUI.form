@@ -49,22 +49,30 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoMenuGerarRelatorioActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="botaoProcurarProduto">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Procurar Produto"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoProcurarProdutoActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuCarrinho">
           <Properties>
             <Property name="text" type="java.lang.String" value="Carrinho"/>
           </Properties>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="menuDepartamento">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Departamento"/>
-          </Properties>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="menuListar">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Listar"/>
-          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="botaoAbrirCarrinho">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Abrir carrinho"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoAbrirCarrinhoActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>

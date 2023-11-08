@@ -13,8 +13,7 @@ public class Produto implements Comparable<Produto>, Serializable {
     private int quantidade;
 
     public Produto(String nomeProduto, String idProduto, String fabricante,
-                   Departamento departamento, double preco, int quantidade)
-    {
+                   Departamento departamento, double preco, int quantidade) {
         this.nomeProduto = nomeProduto;
         this.idProduto = idProduto;
         this.fabricante = fabricante;

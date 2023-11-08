@@ -72,62 +72,10 @@ public class Estoque implements EstoqueInterface {
         return quantidade <= quantidadeNoEstoque;
     }
 
-    public List<Produto> listarProdutosPorPrecoCrescente() {
-        List<Produto> produtos = new LinkedList<>(produtosNoEstoque.values());
-        Collections.sort(produtos);
-        return produtos;
-    }
-
-    public List<Produto> listarProdutosPorPrecoDecrescente() {
-        List<Produto> produtos = listarProdutosPorPrecoCrescente();
-        List<Produto> produtosDecrescente = new LinkedList<>();
-        for (int i = produtos.size() - 1; i >= 0; i--)
-            produtosDecrescente.add(produtos.get(i));
-        produtos = produtosDecrescente;
-        return produtos;
-    }
-
-    public List<Produto> listarProdutosPorOrdemAlfabetica() {
-        List<String> nomesDosProdutos = new LinkedList<>();
-        for (Produto p : produtosNoEstoque.values())
-            nomesDosProdutos.add(p.getNomeProduto());
-        Collections.sort(nomesDosProdutos);
-        List<Produto> produtos = new LinkedList<>();
-        for (String s : nomesDosProdutos)
-            for (Produto p : produtosNoEstoque.values())
-                if (p.getNomeProduto().equals(s))
-                    produtos.add(p);
-        return produtos;
-    }
-
-    public List<Produto> pesquisarProdutosQueCustamEntre(double precoMinimo, double precoMaximo) {
-        List<Produto> produtosQueCustamMenosQue = new LinkedList<>();
-        for (Produto p : produtosNoEstoque.values())
-            if (p.getPreco() >= precoMinimo && p.getPreco() <= precoMaximo)
-                produtosQueCustamMenosQue.add(p);
-        return produtosQueCustamMenosQue;
-    }
-
-    public List<Produto> pesquisarProdutosDoFabricante(String fabricante) {
-        List<Produto> produtosDoFabricante = new LinkedList<>();
-        for (Produto p : produtosNoEstoque.values())
-            if (p.getFabricante().equals(fabricante))
-                produtosDoFabricante.add(p);
-        return produtosDoFabricante;
-    }
-
     public Produto procurarProduto(String id) throws ProdutoNaoEncontradoException {
         if (!produtosNoEstoque.containsKey(id))
             throw new ProdutoNaoEncontradoException(id);
         return produtosNoEstoque.get(id);
-    }
-
-    public List<Produto> listarProdutosDoDepartamento(Departamento departamento) {
-        List<Produto> produtosDoDepartamento = new LinkedList<>();
-        for (Produto p : produtosNoEstoque.values())
-            if (p.getDepartamento().equals(departamento))
-                produtosDoDepartamento.add(p);
-        return produtosDoDepartamento;
     }
 
     public void gerarRelatorio(String nomeArquivo) {
