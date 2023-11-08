@@ -1,4 +1,4 @@
-package br.ufpb.dcx.comerciotech.logic;
+package comerciotech.logic;
 
 public enum Departamento {
 
