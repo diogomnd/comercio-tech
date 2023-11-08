@@ -85,6 +85,7 @@ public class Estoque implements EstoqueInterface {
             printWriter.println("Data: " + LocalDate.now());
             printWriter.println();
             Estoque estoque = gravador.recuperarDadosDoEstoque();
+            if (estoque == null) estoque = this;
             printWriter.println(estoque);
         } catch (FileNotFoundException e) {
             System.err.println(e.getMessage());

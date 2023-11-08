@@ -1,0 +1,11 @@
+Relatório do estoque
+Data: 2023-11-08
+
+Nível atual do estoque: 150
+Produtos no estoque: 
+Apple iPhone 15
+ID: 405671
+Fabricante: Apple
+Departamento: Celulares
+Valor: R$ 5670.0
+Quantidade no estoque: 150
