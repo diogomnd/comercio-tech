@@ -71,7 +71,7 @@ public class Carrinho {
             builder.append(quantidade).append("x ").append(p.getNomeProduto());
             builder.append(" -> R$ ").append(valorFormatado(precoTotalDoProduto)).append("\n");
         }
-        builder.append("Preço total do carrinho: R$ ").append(valorFormatado(calculaTotal()));
+        //builder.append("Preço total do carrinho: R$ ").append(valorFormatado(calculaTotal()));
         return builder.toString();
     }
 

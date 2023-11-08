@@ -1,6 +1,7 @@
 package br.ufpb.dcx.comerciotech.logic;
 
 import br.ufpb.dcx.comerciotech.exceptions.EstoqueCheioException;
+import br.ufpb.dcx.comerciotech.exceptions.EstoqueVazioException;
 import br.ufpb.dcx.comerciotech.exceptions.ProdutoJaCadastradoException;
 import br.ufpb.dcx.comerciotech.exceptions.ProdutoNaoEncontradoException;
 import br.ufpb.dcx.comerciotech.recorder.GravadorDeDadosDoEstoque;
@@ -47,9 +48,11 @@ public class Estoque implements EstoqueInterface {
         atualizarNivelDoEstoque(quantidade);
     }
 
-    public void removerProduto(String id) throws ProdutoNaoEncontradoException {
+    public void removerProduto(String id) throws ProdutoNaoEncontradoException, EstoqueVazioException {
         if (!produtosNoEstoque.containsKey(id))
             throw new ProdutoNaoEncontradoException(id);
+        if (nivelAtual == 0)
+            throw new EstoqueVazioException();
         Produto produto = produtosNoEstoque.get(id);
         atualizarNivelDoEstoque(-produto.getQuantidade());
         produtosNoEstoque.remove(id);
