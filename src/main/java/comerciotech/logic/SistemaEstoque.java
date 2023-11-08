@@ -1,24 +1,40 @@
-package br.ufpb.dcx.comerciotech.logic;
+package comerciotech.logic;
 
-import br.ufpb.dcx.comerciotech.exceptions.EstoqueCheioException;
-import br.ufpb.dcx.comerciotech.exceptions.ProdutoJaCadastradoException;
-import br.ufpb.dcx.comerciotech.exceptions.ProdutoNaoEncontradoException;
-import br.ufpb.dcx.comerciotech.recorder.GravadorDeDadosDoEstoque;
+import comerciotech.recorder.GravadorDeDadosDoEstoque;
+import comerciotech.exceptions.EstoqueCheioException;
+import comerciotech.exceptions.ProdutoJaCadastradoException;
+import comerciotech.exceptions.ProdutoNaoEncontradoException;
 
-import java.io.*;
-import java.time.LocalDate;
 import java.util.*;
 
-public class Estoque implements EstoqueInterface {
+public class SistemaEstoque implements EstoqueInterface {
 
-    private final Map<String, Produto> produtosNoEstoque;
+    private Map<String, Produto> produtosNoEstoque;
     private final int capacidadeMaxima;
     private int nivelAtual;
+    private GravadorDeDadosDoEstoque gravador = new GravadorDeDadosDoEstoque();
 
-    public Estoque() {
+    public SistemaEstoque() {
         this.produtosNoEstoque = new HashMap<>();
         this.capacidadeMaxima = 1000;
         this.nivelAtual = 0;
+        recuperarDados();
+    }
+
+    public void salvarDados(){
+        try {
+            this.gravador.salvarDadosDoEstoque(this.produtosNoEstoque);
+        }catch (Exception e){
+            System.err.println(e.getMessage());
+        }
+    }
+
+    public void recuperarDados(){
+        try {
+            this.produtosNoEstoque = this.gravador.recuperarDadosDoEstoque();
+        }catch (Exception e){
+            System.err.println(e.getMessage());
+        }
     }
 
     public Map<String, Produto> getProdutosNoEstoque() {
@@ -127,7 +143,7 @@ public class Estoque implements EstoqueInterface {
         return produtosDoDepartamento;
     }
 
-    public void gerarRelatorio(String nomeArquivo) {
+    /*public void gerarRelatorio(String nomeArquivo) {
         GravadorDeDadosDoEstoque gravador = new GravadorDeDadosDoEstoque();
         try (PrintWriter printWriter = new PrintWriter(nomeArquivo)) {
             printWriter.println("Relatório do estoque");
@@ -138,7 +154,7 @@ public class Estoque implements EstoqueInterface {
         } catch (FileNotFoundException e) {
             System.err.println(e.getMessage());
         }
-    }
+    }*/
 
     @Override
     public String toString() {

@@ -1,4 +1,4 @@
-package br.ufpb.dcx.comerciotech.exceptions;
+package comerciotech.exceptions;
 
 public class EstoqueCheioException extends Exception {
     public EstoqueCheioException(int capacidade) {

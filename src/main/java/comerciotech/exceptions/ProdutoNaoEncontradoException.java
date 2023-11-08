@@ -1,4 +1,4 @@
-package br.ufpb.dcx.comerciotech.exceptions;
+package comerciotech.exceptions;
 
 public class ProdutoNaoEncontradoException extends Exception {
     public ProdutoNaoEncontradoException(String id) {

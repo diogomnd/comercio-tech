@@ -1,4 +1,4 @@
-package br.ufpb.dcx.comerciotech.logic;
+package comerciotech.logic;
 
 import java.io.Serializable;
 import java.util.Objects;
